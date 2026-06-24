@@ -2,7 +2,6 @@
 using System.Collections.Concurrent;
 using System.Data.Common;
 using System.Diagnostics;
-using Communicate.Domain.Ports.Logic;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace EFMonitor
