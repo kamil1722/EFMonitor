@@ -41,7 +41,7 @@ namespace EFMonitor
                 sw.Stop();
                 var longTime = sw.Elapsed >= _threshold;
 
-                DbErrorRateMetrics.RegisterQuery(failed: false, longTimeQuery: longTime);
+                DbMetrics.RegisterQuery(failed: false, longTimeQuery: longTime);
                 await LogIfSlow(sw.Elapsed, command);
             }
 
@@ -71,7 +71,7 @@ namespace EFMonitor
                 sw.Stop();
                 var longTime = sw.Elapsed >= _threshold;
 
-                DbErrorRateMetrics.RegisterQuery(failed: false, longTimeQuery: longTime);
+                DbMetrics.RegisterQuery(failed: false, longTimeQuery: longTime);
                 await LogIfSlow(sw.Elapsed, command);
             }
 
@@ -84,7 +84,7 @@ namespace EFMonitor
             CommandErrorEventData eventData,
             CancellationToken cancellationToken = default)
         {
-            DbErrorRateMetrics.RegisterQuery(failed: true, longTimeQuery: false);
+            DbMetrics.RegisterQuery(failed: true, longTimeQuery: false);
 
             await base.CommandFailedAsync(command, eventData, cancellationToken);
         }
